@@ -56,7 +56,7 @@ def std_normal(size):
     Generate the standard Gaussian variable of a certain size
     """
 
-    return torch.normal(0, 2, size=size).cuda()
+    return torch.normal(0, 1, size=size).cuda()
 
 
 def calc_diffusion_step_embedding(diffusion_steps, diffusion_step_embed_dim_in):
