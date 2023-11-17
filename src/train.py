@@ -15,6 +15,8 @@ from imputers.SSSDS4Imputer import SSSDS4Imputer
 import datetime
 from torch.utils.tensorboard import SummaryWriter
 
+import random
+
 def train(output_directory,
           ckpt_iter,
           n_iters,
@@ -109,13 +111,27 @@ def train(output_directory,
     ### Custom data loading and reshaping ###
     training_data = np.load(trainset_config['train_data_path'])
 
-    batch_size = 94 # 400 太多
-    training_size = training_data.shape[0]
-    #################################### 
-    # training_data = training_data[0:4418,] # 現在 4423 無法被整除，用回原本的 4418
-    ####################################
+    # batch_size = 80 # 400 太多
+    # training_size = training_data.shape[0]
+    # #################################### 
+    # # training_data = training_data[0:4418,] # 現在 4423 無法被整除，用回原本的 4418
+    # ####################################
     # training_data = np.split(training_data, training_size/batch_size, 0) # 為了創造 batch，除不盡可用 np.array_split
-    training_data = np.array_split(training_data, training_size/batch_size, 0) # 將 training_size 分成 training_size/batch_size 堆可能不同 size 的 batch
+    # # training_data = np.array_split(training_data, training_size/batch_size, 0) # 將 training_size 分成 training_size/batch_size 堆可能不同 size 的 batch
+    # training_data = np.array(training_data)
+    # training_data = torch.from_numpy(training_data).float().cuda()
+    # print('Data loaded')
+
+
+    batch_size = 80
+    training_size = training_data.shape[0]
+
+    batch_num = round(training_size/batch_size)
+    print(batch_num)
+    index = random.sample(range(training_size), batch_num*batch_size)
+
+    training_data = training_data[index,] # 捨棄 training_size 除以 batch_size 的餘數
+    training_data = np.split(training_data, batch_num, 0) # split into batch_num batches
     training_data = np.array(training_data)
     training_data = torch.from_numpy(training_data).float().cuda()
     print('Data loaded')

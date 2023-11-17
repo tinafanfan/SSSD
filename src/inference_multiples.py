@@ -49,7 +49,7 @@ def generate(output_directory,
                                               diffusion_config["beta_T"])
 
     # Get shared output_directory ready
-    output_directory = os.path.join(output_directory, local_path, "imputaiton_multiple_N02")
+    output_directory = os.path.join(output_directory, local_path, "imputaiton_multiple")
     if not os.path.isdir(output_directory):
         os.makedirs(output_directory)
         os.chmod(output_directory, 0o775)
