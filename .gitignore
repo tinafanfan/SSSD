@@ -1,5 +1,4 @@
 # data
 src/datasets/
 src/results/
-!src/datasets/NYISO/script/vis.ipynb
-
+/!src/datasets/NYISO/script/vis.ipynb
