@@ -1,4 +1,9 @@
 # data
-src/datasets/
+src/datasets/AR/AR1/
+src/datasets/7_days/
+src/datasets/8_days/zone/
+src/datasets/pickle/
+src/datasets/raw_csv/
+src/datasets/paper/
 src/results/
-\!vis!.ipynb
+
