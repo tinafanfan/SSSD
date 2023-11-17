@@ -1,6 +1,5 @@
 # data
 src/datasets/
 src/results/
-!src/datasets/NYISO/script/
-!src/datasets/NYISO/AR/script/
-!src/datasets/NYISO/8_days/all/
+!src/datasets/NYISO/script/vis.ipynb
+
